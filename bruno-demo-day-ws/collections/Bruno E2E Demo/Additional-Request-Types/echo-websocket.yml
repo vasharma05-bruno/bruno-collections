@@ -1,0 +1,20 @@
+info:
+  name: echo-websocket
+  type: websocket
+  seq: 3
+
+websocket:
+  url: wss://echo.websocket.org
+  message:
+    type: json
+    data: |-
+      {
+        "type": "message",
+        "content": "Hello from Bruno!",
+        "timestamp": "2025-01-09T10:30:00Z",
+        "user": {
+          "id": 123,
+          "name": "{{nameVar}}"
+        }
+      }
+  auth: inherit

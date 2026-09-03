@@ -1,0 +1,47 @@
+meta {
+  name: Verify Creation
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/users/{{id}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isJson
+  res.body.id: isNumber
+}
+
+tests {
+  test("User exists and has valid data", () => {
+    const body = res.getBody();
+    expect(body).to.have.property("id");
+    expect(body).to.have.property("name");
+    expect(body).to.have.property("email");
+  });
+  
+  test("Response time is acceptable", () => {
+    expect(res.responseTime).to.be.below(5000);
+  });
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Verify Creation ✔️
+  
+  This is a verification step that runs after Create User in the collection runner sequence.
+  
+  It fetches a user from JSONPlaceholder to demonstrate that the runner executes requests in **sequence order** (seq 1, then seq 2).
+  
+  Notice the `res.responseTime` check — you can also assert on performance!
+}

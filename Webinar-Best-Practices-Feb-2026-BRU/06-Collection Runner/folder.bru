@@ -1,0 +1,78 @@
+meta {
+  name: 06-Collection Runner
+  seq: 6
+}
+
+docs {
+  # 🏃 Section 6: Collection Runner
+  
+  The Collection Runner lets you execute multiple requests in sequence — and with **data files**, you can run the same requests multiple times with different data!
+  
+  In this section, you will:
+  
+  - ✅ Use data file variables in request URLs and bodies
+  - ✅ Run a folder using the Collection Runner
+  - ✅ Use a JSON data file for data-driven testing
+  - ✅ See how requests execute in sequence order
+  
+  📌 Make sure the **Workshop** environment is selected from the dropdown (top right).
+  
+  ---
+  
+  ### 📋 Requests in This Section
+  
+  ---
+  
+  **🔹 Create User** — POST user data to the echo server
+  - Sends a JSON body with `name` and `website` fields using data file variables
+  - 🎯 **Your task:** The body has empty `{{}}` placeholders — fill in the correct **data file variable names**
+  - 💡 **Hint:** Look at `users.json` in the collection root to see the available column names
+  - Assertions are already set up to verify the echoed response
+  
+  ---
+  
+  **🔹 Verify Creation** — GET a user by ID from JSONPlaceholder
+  - Fetches a user to demonstrate that requests run in **sequence order** (Create User first, then Verify Creation)
+  - 🎯 **Your task:** The URL has an empty `{{}}` — fill in the correct variable name to look up the user by ID
+  - 💡 **Hint:** Which column in `users.json` contains the user's ID?
+  - Also demonstrates `res.responseTime` assertions for performance checks
+  
+  ---
+  
+  ### 🏃 Using the Collection Runner
+  
+  Once you've filled in the placeholders:
+  
+  1. **Without a data file:** Right-click on the `06-Collection Runner` folder → **Run** — both requests execute in sequence
+  2. **With a data file:** In the runner dialog, check **Run with Parameters** → select **JSON** → choose `users.json` from the collection root
+  3. The runner will iterate **5 times** (once per user in the JSON file), replacing `{{name}}`, `{{website}}`, and `{{id}}` with each row's values 🎉
+  
+  ---
+  
+  ### 📁 Data File
+  
+  📄 **users.json** — located at the collection root, contains 5 users from JSONPlaceholder:
+  - Columns: `id`, `name`, `website`
+  - Each object becomes one iteration of the collection run
+  - Variables are accessed as `{{id}}`, `{{name}}`, `{{website}}` in URLs and bodies
+  
+  ---
+  
+  ### 📂 Solution Folder
+  
+  The **Solution** subfolder contains fully working versions with all placeholders filled in.
+  
+  **Solution requests:**
+  - ✅ **Create User** — uses `{{name}}` and `{{website}}` from the data file
+  - ✅ **Verify Creation** — uses `{{id}}` to fetch the correct user
+  
+  ---
+  
+  ### 📌 Key Concepts
+  
+  - **Collection Runner** — execute all requests in a folder in sequence order
+  - **Data-driven testing** — use JSON (or CSV) files to run the same requests with different data per iteration
+  - **Data file variables** — keys in the JSON objects become `{{variableName}}` placeholders
+  - **Sequence order** — requests run in their `seq` order (seq 1 first, seq 2 second, etc.)
+  - **Performance assertions** — use `res.responseTime` to assert on response speed
+}

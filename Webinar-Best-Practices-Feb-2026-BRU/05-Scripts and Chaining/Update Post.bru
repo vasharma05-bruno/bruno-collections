@@ -1,0 +1,64 @@
+meta {
+  name: Update Post
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/posts/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Updated by Bruno",
+    "body": "This post was updated during the workshop to demonstrate request chaining.",
+    "userId": {{defaultUserId}}
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body.id: isNumber
+  res.body.title: eq Created by Bruno
+}
+
+script:post-response {
+  const body = res.getBody();
+  
+  if (body && body.id) {
+    bru.setVar("capturedPostId", body.id);
+    console.log("✅ Captured post ID:", body.id);
+    console.log("✅ Captured title:", body.title);
+  }
+}
+
+tests {
+  test("Post was created successfully", () => {
+    expect(res.status).to.equal(201);
+    expect(res.getBody()).to.have.property("id");
+    expect(res.getBody()).to.have.property("title");
+  });
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Create Post 🔗
+  
+  This request creates a new post and **captures the returned ID** for use by other requests.
+  
+  **What happens:**
+  1. Sends a POST to create a new post
+  2. Captures the returned post ID with `bru.setVar("capturedPostId", body.id)`
+  
+  **Try it:**
+  - Send this request and check the **Timeline** tab to see the captured values
+  - Then open **Get Post Details** — it uses `bru.runRequest()` to call this request automatically
+}

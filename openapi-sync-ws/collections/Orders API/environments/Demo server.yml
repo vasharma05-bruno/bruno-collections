@@ -1,0 +1,4 @@
+name: Demo server
+variables:
+  - name: baseUrl
+    value: https://api.demo.local/v1

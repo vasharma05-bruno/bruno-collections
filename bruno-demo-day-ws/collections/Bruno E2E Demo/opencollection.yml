@@ -1,0 +1,33 @@
+opencollection: 1.0.0
+
+info:
+  name: Bruno E2E Demo
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  variables:
+    - name: tokenVar
+      value: tokenCollection
+      disabled: true
+  scripts:
+    - type: before-request
+      code: // console.log('Collection Level Script Logic')
+
+docs:
+  content: |-
+    ### Markdown Docs
+    - 
+    - 
+  type: text/markdown
+bundled: false
+extensions: {}

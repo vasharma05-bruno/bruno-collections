@@ -1,0 +1,49 @@
+meta {
+  name: Create User
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{echoUrl}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "{{}}",
+    "website": "{{}}"
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.name: isString
+  res.body.website: isString
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Create User 👤
+  
+  This request sends user data to the echo server.
+  
+  **When run normally:** Uses default variable values (will be empty)
+  **When run with a data file:** `{{name}}` and `{{job}}` are replaced with values from each row in the CSV/JSON file
+  
+  ## Data File Format (CSV)
+  ```
+  name,job
+  Alice Johnson,Frontend Developer
+  Bob Williams,Backend Engineer
+  ```
+  
+  Each row becomes a separate execution of this request!
+}

@@ -1,0 +1,59 @@
+info:
+  name: Upload Form
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: https://api.example.com/submit
+  body:
+    type: form-urlencoded
+    data:
+      - name: username
+        value: johndoe
+      - name: password
+        value: secret123
+  auth:
+    type: apikey
+    key: x-api-key
+    value: "{{api-key}}"
+    placement: header
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        // Runs before the request
+        console.log('before-request');
+        req.setHeader("X-Timestamp", Date.now());
+    - type: after-response
+      code: |-
+        // Runs after the response
+        console.log('after-response');
+        bru.setVar("token", res.body.token);
+    - type: tests
+      code: |-
+        test("should return 200", function() {
+          expect(res.status).to.equal(200);
+        });
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body.name
+      operator: isString
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  # User Creation API
+
+  This endpoint creates a new user in the system.
+
+  ## Required Fields
+  - name: User's full name
+  - email: User's email address

@@ -1,0 +1,113 @@
+info:
+  name: List orders
+  type: http
+  seq: 1
+  tags:
+    - Orders
+
+http:
+  method: GET
+  url: "{{baseUrl}}/orders"
+  params:
+    - name: status
+      value: pending
+      type: query
+      description: Filter orders by current status
+      disabled: true
+    - name: status
+      value: confirmed
+      type: query
+      description: Filter orders by current status
+      disabled: true
+    - name: status
+      value: shipped
+      type: query
+      description: Filter orders by current status
+      disabled: true
+    - name: status
+      value: delivered
+      type: query
+      description: Filter orders by current status
+      disabled: true
+    - name: status
+      value: cancelled
+      type: query
+      description: Filter orders by current status
+      disabled: true
+    - name: page
+      value: "1"
+      type: query
+    - name: pageSize
+      value: "20"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: A paginated list of orders
+    request:
+      url: "{{baseUrl}}/orders"
+      method: GET
+      params:
+        - name: status
+          value: pending
+          type: query
+          description: Filter orders by current status
+          disabled: true
+        - name: status
+          value: confirmed
+          type: query
+          description: Filter orders by current status
+          disabled: true
+        - name: status
+          value: shipped
+          type: query
+          description: Filter orders by current status
+          disabled: true
+        - name: status
+          value: delivered
+          type: query
+          description: Filter orders by current status
+          disabled: true
+        - name: status
+          value: cancelled
+          type: query
+          description: Filter orders by current status
+          disabled: true
+        - name: page
+          value: "1"
+          type: query
+        - name: pageSize
+          value: "20"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": [
+              {
+                "id": "ord_1001",
+                "customerId": "cust_1001",
+                "status": "confirmed",
+                "totalAmount": 70.98,
+                "createdAt": "2026-04-14T12:05:00Z"
+              }
+            ],
+            "pagination": {
+              "page": 1,
+              "pageSize": 20,
+              "total": 42
+            }
+          }

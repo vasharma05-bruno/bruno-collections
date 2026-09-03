@@ -1,0 +1,67 @@
+meta {
+  name: 02-Working with Variables
+  seq: 1
+}
+
+docs {
+  # 📦 Section 2: Working with Variables
+  
+  Now that you can send requests, let's explore **environments** and **variables** — the backbone of reusable API collections.
+  
+  In this section, you will:
+  
+  - ✅ Use environment variables (`{{baseUrl}}`, `{{defaultUserId}}`)
+  - ✅ Use Bruno's built-in dynamic variables (`{{$randomFullName}}`, `{{$randomEmail}}`)
+  - ✅ Send POST and PUT requests with JSON bodies
+  - ✅ Switch between environments and see values change
+  
+  📌 Make sure the **Workshop** environment is selected from the dropdown (top right).
+  
+  ---
+  
+  ### 📋 Requests in This Section
+  
+  Each request has **intentionally missing or incorrect variable references** — follow along with the instructor to fix them!
+  
+  ---
+  
+  **🔹 Create a Post** — POST request to create a new resource
+  - Sends a JSON body with title, body, and userId
+  - 🎯 **Your task:** The `userId` field has a hardcoded value — replace it with the correct **environment variable**
+  - 💡 **Hint:** Check the Workshop environment to see which variable holds the default user ID
+  - **Expected:** Status `201 Created` with the new post data
+  
+  ---
+  
+  **🔹 Echo with Variables** — POST request showcasing different variable types
+  - Demonstrates both **environment variables** and **dynamic variables** side by side
+  - 🎯 **Your task:** The body has empty `{{}}` placeholders — fill in the correct variable names
+  - 💡 **Hint:** You'll need one environment variable and several dynamic variables (starting with `$`)
+  - **Try it:** Send multiple times to see dynamic values change, then switch environments!
+  
+  ---
+  
+  **🔹 Update a Post** — PUT request to update an existing resource
+  - Sends the full updated resource in the JSON body
+  - 🎯 **Your task:** The `userId` field in the body has an empty `{{}}` — fill in the correct variable (hint it won't come from your 'normal' variable types)
+  - **Expected:** Status `200 OK` with the updated post data
+  
+  ---
+  
+  ### 📁 Solution Folder
+  
+  The **Solution** subfolder contains fully working versions with all variables correctly referenced.
+  
+  **Solution requests:**
+  - ✅ **Create a Post** — uses `{{defaultUserId}}` for the userId
+  - ✅ **Echo with Variables** — demonstrates `{{appName}}`, `{{$randomFullName}}`, `{{$randomEmail}}`, and `{{$randomJobTitle}}`
+  - ✅ **Update a Post** — complete with proper variable usage
+  
+  ---
+  
+  ### 📌 Key Concepts
+  
+  - **Environment variables** (`{{baseUrl}}`, `{{defaultUserId}}`) — defined per environment, great for switching between dev/staging/prod
+  - **Dynamic variables** (`{{$randomFullName}}`, `{{$randomEmail}}`) — built into Bruno, generate fresh random values on every request
+  - Open the **Environment Editor** to inspect and modify variable values
+}

@@ -1,0 +1,98 @@
+meta {
+  name: Bruno Live Workshop
+}
+
+auth {
+  mode: none
+}
+
+script:pre-request {
+  // Collection-level pre-request script
+  // This runs before EVERY request in the collection
+  console.log(`🚀 Sending: ${req.getName()}`);
+}
+
+docs {
+  # 🎉 Welcome to the Bruno Live Workshop!
+  
+  This collection is designed for a **hands-on, instructor-led walkthrough** of Bruno's key features. Each section contains intentionally incomplete requests for you to fix — with fully working solutions in each **Solution** subfolder.
+  
+  ## 📋 Sections
+  
+  1. **Getting Started** — Send your first requests (GET, POST), explore JSON responses
+  2. **Working with Variables** — Environment variables, dynamic variables, switching environments
+  3. **Authentication** — Bearer token login, OAuth2 Client Credentials, token chaining
+  4. **Tests & Assertions** — Declarative assertions, Chai.js tests, Zod schema validation, external JS files
+  5. **Scripts & Chaining** — Pre/post-request scripts, `bru.runRequest()` chaining, `bru.visualize()` data visualization
+  6. **Collection Runner** — Data-driven testing with JSON data files, batch execution
+  
+  ## 🏁 Before You Start
+  
+  1. Select the **Workshop** environment from the environment dropdown (top right)
+  2. Work through the sections in order (01 → 06)
+  3. Click on each folder's **Docs** tab for instructions and guidance
+  4. Each request at the folder root is **intentionally incomplete** — follow along with the instructor!
+  5. If you get stuck, check the **Solution** subfolder in each section for the working version
+  
+  ## 📂 How This Collection Is Structured
+  
+  ```
+  📁 01-Getting Started/
+  ├── Hello Echo.yml          ← Incomplete (your task!)
+  ├── Get Dog Facts.yml       ← Ready to send
+  ├── Get All Users.yml       ← Incomplete (your task!)
+  └── 📁 Solution/            ← Working reference versions
+  ```
+  
+  Each section follows this pattern — incomplete requests at the root, complete solutions in the subfolder.
+  
+  ## 💻 Bruno CLI Quick Reference
+  
+  Bruno also has a CLI for running collections from the terminal or CI/CD pipelines.
+  
+  ```bash
+  # Run this entire collection
+  bru run --env Workshop
+  
+  # Run a specific section
+  bru run "04-Tests and Assertions/Solution" --env Workshop
+  
+  # Run with a JSON data file
+  bru run "06-Collection Runner/Solution" --env Workshop --reporter-json results.json
+  
+  # Generate an HTML report
+  bru run --env Workshop --reporter-html reports/report.html
+  
+  # Stop on first failure
+  bru run --env Workshop --bail
+  ```
+  
+  ## 🤖 GitHub Actions CI
+  
+  This repo includes a GitHub Actions workflow (`.github/workflows/collection-runner-tests.yml`) that automatically runs the **06-Collection Runner** section using the Bruno CLI and the `users.json` data file.
+  
+  - **Triggers** on push to `main`, pull requests, or manual dispatch
+  - Runs `bru run "06-Collection Runner/Solution" --env Workshop --json-file-path ../../users.json`
+  - Generates JSON and HTML reports, uploaded as artifacts
+  - Great example of integrating Bruno into a CI/CD pipeline — see [GitHub Actions docs](https://docs.usebruno.com/bru-cli/gitHubCLI)
+  
+  ## 🙏 Public APIs Used
+  
+  This workshop uses the following free, public APIs — thank you to their maintainers!
+  
+  - **[JSONPlaceholder](https://jsonplaceholder.typicode.com)** — Free fake REST API for testing and prototyping (by [typicode](https://github.com/typicode))
+  - **[Dog API](https://dogapi.dog)** — Free API for random dog facts and breeds
+  - **[Bruno Echo Server](https://echo.usebruno.com)** — Bruno's echo endpoint that mirrors back whatever you send
+  - **[httpfaker.org](https://www.httpfaker.org)** — Free API for testing authentication flows (Bearer, OAuth2)
+  
+  ## 🔗 Useful Links
+  
+  - [Bruno Documentation](https://docs.usebruno.com/)
+  - [Bruno GitHub](https://github.com/usebruno/bruno)
+  - [Bruno Blog](https://blog.usebruno.com/)
+  - [Bruno CLI Docs](https://docs.usebruno.com/bru-cli/overview)
+  - [Data-Driven Testing](https://docs.usebruno.com/testing/automate-test/data-driven-testing)
+  - [External JS Files](https://docs.usebruno.com/testing/script/js-file)
+  
+  Happy testing! 🐾
+}

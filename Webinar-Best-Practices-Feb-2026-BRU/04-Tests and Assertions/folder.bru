@@ -1,0 +1,83 @@
+meta {
+  name: 04-Tests and Assertions
+  seq: 4
+}
+
+docs {
+  # ✅ Section 4: Tests and Assertions
+  
+  Bruno provides two powerful ways to validate API responses:
+  
+  1. **Assert tab** — Simple, declarative, no code needed
+  2. **Tests tab** — Full JavaScript with Chai.js assertions
+  
+  In this section, you will:
+  
+  - ✅ Enable and use declarative assertions
+  - ✅ Write JavaScript test suites with Chai.js
+  - ✅ Combine both approaches in a single request
+  - ✅ Use an external npm library (Zod) for schema validation
+  - ✅ Externalize test logic into reusable JS files
+  
+  📌 Make sure the **Workshop** environment is selected from the dropdown (top right).
+  
+  ---
+  
+  ### 📋 Requests in This Section
+  
+  ---
+  
+  **🔹 Assert Basics** — Declarative assertions with no code
+  - A GET request to the Dog API with three assertions already defined
+  - 🎯 **Your task:** The assertions are all **disabled** — enable them and send the request
+  - Check the **Tests** tab in the response to see assertion results
+  - 💡 Available operators: `eq`, `neq`, `gt`, `gte`, `lt`, `lte`, `contains`, `isNumber`, `isString`, `isBoolean`, `isArray`, `isJson`
+  
+  ---
+  
+  **🔹 Chai.js Tests** — JavaScript test suites with `expect()`
+  - A GET request to fetch a single user, with both assertions and script-based tests
+  - 🎯 **Your task:** The test scripts have **missing values** — fill in the expected status code and the property names to check
+  - 💡 **Hint:** What status code does a successful GET return? What are the first four properties on a user object?
+  - Notice how assertions and Chai.js tests work **side by side** in the same request
+  
+  ---
+  
+  **🔹 Full Test Suite** — Combining assertions, Chai.js, and Zod schema validation
+  - A GET request to fetch all users with a comprehensive test suite
+  - 🎯 **Your task:** The `require("")` statement is missing the **package name** — fill it in to load the Zod library
+  - 💡 **Hint:** The Zod package is already installed in the collection's `package.json`
+  - 🔌 **Note:** Run `npm install` in the collection root directory if you haven't already
+  
+  ---
+  
+  **🔹 Full Test Suite (JS File)** — Externalizing tests to a reusable JS file
+  - Same tests as "Full Test Suite" but the logic lives in an external `userTests.js` file
+  - 🎯 **Your task:** The `require("")` path is empty and the function call is missing its argument — fill in the correct path and pass the response object
+  - 💡 **Hint:** The JS file path is relative to the collection root. Check the comment in the script for a clue!
+  
+  ---
+  
+  ### 📁 Solution Folder
+  
+  The **Solution** subfolder contains fully working versions of all test requests.
+  
+  **Solution requests:**
+  - ✅ **Assert Basics** — all assertions enabled and passing
+  - ✅ **Chai.js Tests** — complete with all expected values and property names
+  - ✅ **Full Test Suite** — working Zod import and comprehensive validation
+  - ✅ **Full Test Suite (JS File)** — demonstrates the external JS file pattern with `userTests.js`
+  
+  **Supporting files:**
+  - 📄 **userTests.js** — reusable module consolidating Chai.js tests and Zod schema validation
+  
+  ---
+  
+  ### 📌 Key Concepts
+  
+  - **Assertions** — declarative, no-code validation (Assert tab)
+  - **Chai.js tests** — `test("name", () => { expect(...) })` for expressive JavaScript testing
+  - **External libraries** — `require("zod")` loads npm packages from the collection's `package.json`
+  - **JS file tests** — `require("./path/to/file.js")` externalizes logic into reusable modules
+  - You can use **both** assertions and script tests together in the same request
+}

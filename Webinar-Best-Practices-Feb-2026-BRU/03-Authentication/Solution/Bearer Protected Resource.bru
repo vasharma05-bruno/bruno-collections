@@ -1,0 +1,50 @@
+meta {
+  name: Bearer Protected Resource
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{httpFakerUrl}}/api/auth/bearer/resource
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{bearerToken}}
+}
+
+assert {
+  res.status: eq 200
+  res.body.name: isString
+  res.body.email: isString
+}
+
+tests {
+  test("Access granted with valid token", () => {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Response contains user profile", () => {
+    const body = res.getBody();
+    expect(body).to.have.property("name");
+    expect(body).to.have.property("email");
+    expect(body).to.have.property("likes");
+    expect(body.likes).to.be.an("array");
+  });
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  ## Bearer Protected Resource
+  
+  Uses the bearer token captured from the login request to access a protected resource.
+  
+  ⚠️ Run "Bearer Login" first to capture the token!
+}

@@ -1,0 +1,42 @@
+meta {
+  name: Echo with Variables
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{echoUrl}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "workshop": "{{appName}}",
+    "attendee": "{{$randomFullName}}",
+    "email": "{{$randomEmail}}",
+    "role": "{{$randomJobTitle}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Echo with Variables 🔀
+  
+  This request demonstrates two types of variables:
+  
+  1. **Environment variables** — `{{appName}}` comes from your selected environment
+  2. **Dynamic variables** — `{{$randomFullName}}`, `{{$randomEmail}}`, `{{$randomJobTitle}}` generate fresh random values each time
+  
+  **Try this:**
+  - Send the request multiple times — watch the dynamic values change!
+  - Switch to the **Workshop-Alt** environment and send again — notice `{{appName}}` changes
+  
+  The echo server mirrors back everything you send, so you can see exactly what was sent.
+}

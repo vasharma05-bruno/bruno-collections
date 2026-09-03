@@ -1,0 +1,75 @@
+meta {
+  name: Chai.js Tests
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/users/{{defaultUserId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.id: gt 1
+  res.body.email: isString
+}
+
+tests {
+  const body = res.getBody();
+  
+  // Fix this test, what should the value be?
+  test("Status is 200 OK", () => {
+    expect(res.status).to.equal();
+  });
+  
+  // Fix this test, what 4 first properties does the response have?
+  test("User has required fields", () => {
+    expect(body).to.have.property("");
+    expect(body).to.have.property("");
+    expect(body).to.have.property("");
+    expect(body).to.have.property("");
+  });
+  
+  test("Email is valid format", () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    expect(body.email).to.match(emailRegex);
+  });
+  
+  //Could this also be an assertion?
+  test("User ID matches expected type", () => {
+    expect(body.id).to.be.a("number");
+    expect(body.id).to.be.greaterThan(0);
+  });
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Chai.js Tests 🧪
+  
+  The `tests {}` block gives you full JavaScript with **Chai.js** assertions.
+  
+  **This request tests:**
+  - Status code validation
+  - Required field presence
+  - Email format validation with regex
+  - Data type checks
+  
+  **Key patterns:**
+  ```javascript
+  test("Test name", () => {
+    expect(value).to.equal(expected);
+    expect(obj).to.have.property("key");
+    expect(str).to.match(/regex/);
+  });
+  ```
+  
+  Notice we also have `assert {}` alongside `tests {}` — you can use both together!
+}

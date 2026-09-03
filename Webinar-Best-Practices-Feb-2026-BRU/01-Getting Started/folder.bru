@@ -1,0 +1,69 @@
+meta {
+  name: 01-Getting Started
+  seq: 1
+}
+
+docs {
+  # 🚀 Section 1: Getting Started
+  
+  👋 Welcome to the **Bruno Live Workshop!**
+  
+  In this section, you will:
+  
+  - ✅ Send a POST request to Bruno's echo server
+  - ✅ Send GET requests to public APIs
+  - ✅ Explore JSON responses
+  - ✅ Learn about environment variables in URLs
+  
+  ### 📌 Prerequisites
+  
+  - Bruno is installed and running
+  - You have opened this collection in Bruno
+  - Select the **Workshop** environment from the environment dropdown (top right)
+  
+  ---
+  
+  ### 📋 Requests in This Section
+  
+  Each request below is **intentionally incomplete** — follow along with the instructor to fix them!
+  
+  ---
+  
+  **🔹 Hello Echo** — POST to Bruno's echo server
+  - The echo server mirrors back whatever JSON you send it
+  - 🎯 **Your task:** The JSON body has empty values — fill them in with something meaningful and click **Send** ▶️
+  - Explore the response to see how the echo server works
+  
+  ---
+  
+  **🔹 Get Dog Facts** — GET request to a public API
+  - This request fetches a random dog fact from the Dog API
+  - ✅ This one is ready to go — just click **Send** ▶️ and explore the response
+  - Notice the structured JSON response with `id`, `type`, and `attributes.body`
+  
+  ---
+  
+  **🔹 Get All Users** — GET request to JSONPlaceholder
+  - Fetches all users from the JSONPlaceholder API
+  - 🎯 **Your task:** Look at the URL — something could be improved here. Can you spot what should use an **environment variable** instead?
+  - 💡 **Hint:** Compare this URL to the one in "Get Dog Facts" — how does that request reference its base URL?
+  
+  ---
+  
+  ### 📁 Solution Folder
+  
+  The **Solution** subfolder contains fully working versions of all requests. If you get stuck, open them as a reference!
+  
+  **Solution requests:**
+  - ✅ **Hello Echo** — complete with filled-in JSON body
+  - ✅ **Get Dog Facts** — complete and working
+  - ✅ **Get All Users** — uses `{{baseUrl}}` environment variable
+  
+  ---
+  
+  ### 📌 Key Concepts
+  
+  - **Environment variables** like `{{baseUrl}}` and `{{echoUrl}}` let you reuse URLs across requests — we'll explore these more in the next section
+  - **POST requests** send data in the body; **GET requests** retrieve data
+  - Bruno auto-formats JSON responses for easy reading
+}

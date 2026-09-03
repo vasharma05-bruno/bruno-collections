@@ -1,0 +1,83 @@
+meta {
+  name: Generate Test Data
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{echoUrl}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user": {
+      "email": "{{userEmail}}",
+      "username": "{{username}}",
+      "registeredAt": "{{registrationDate}}"
+    },
+    "metadata": {
+      "requestId": "{{requestId}}",
+      "timestamp": "{{timestamp}}"
+    }
+  }
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:pre-request {
+  // Generate realistic test data
+  const firstNames = ["Alice", "Bob", "Charlie", "Diana", "Eve"];
+  const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Davis"];
+  
+  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+  const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+  const username = `${firstName.toLowerCase()}.${lastName.toLowerCase()}`;
+  const email = `${username}@example.com`;
+  
+  bru.setVar("username", username);
+  bru.setVar("userEmail", email);
+  
+  // Generate timestamp and registration date
+  const now = new Date();
+  bru.setVar("timestamp", now.toISOString());
+  
+  const regDate = new Date(now);
+  regDate.setDate(regDate.getDate() - Math.floor(Math.random() * 365));
+  bru.setVar("registrationDate", regDate.toISOString());
+  
+  // Generate unique request ID
+  const requestId = `req_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+  bru.setVar("requestId", requestId);
+  
+  console.log("🎲 Generated user:", username, email);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Generate Test Data 🎲
+  
+  This request demonstrates how to **generate realistic test data** dynamically using pre-request scripts.
+  
+  **What this script does:**
+  1. Randomly selects first and last names from arrays
+  2. Generates a username and email from the names
+  3. Creates a random registration date within the past year
+  4. Generates a unique request ID with timestamp
+  
+  **Try it:**
+  - Send the request multiple times
+  - Notice how the data changes each time
+  - Check the **Timeline** tab to see the console output
+  
+  This pattern is perfect for load testing or creating varied test scenarios!
+}

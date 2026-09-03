@@ -1,0 +1,108 @@
+info:
+  name: Create an order
+  type: http
+  seq: 2
+  tags:
+    - Orders
+
+http:
+  method: POST
+  url: "{{baseUrl}}/orders"
+  body:
+    type: json
+    data: |-
+      {
+        "customerId": "cust_1001",
+        "items": [
+          {
+            "sku": "sku_espresso_beans",
+            "quantity": 2,
+            "unitPrice": 15.99
+          },
+          {
+            "sku": "sku_milk_frother",
+            "quantity": 1,
+            "unitPrice": 39
+          }
+        ],
+        "notes": "Leave package at front desk."
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response (basicOrder)
+    description: Order created
+    request:
+      url: "{{baseUrl}}/orders"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "customerId": "cust_1001",
+            "items": [
+              {
+                "sku": "sku_espresso_beans",
+                "quantity": 2,
+                "unitPrice": 15.99
+              },
+              {
+                "sku": "sku_milk_frother",
+                "quantity": 1,
+                "unitPrice": 39
+              }
+            ],
+            "notes": "Leave package at front desk."
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 400 Response (basicOrder)
+    description: Invalid request
+    request:
+      url: "{{baseUrl}}/orders"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "customerId": "cust_1001",
+            "items": [
+              {
+                "sku": "sku_espresso_beans",
+                "quantity": 2,
+                "unitPrice": 15.99
+              },
+              {
+                "sku": "sku_milk_frother",
+                "quantity": 1,
+                "unitPrice": 39
+              }
+            ],
+            "notes": "Leave package at front desk."
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "error": "validation_error",
+            "message": "Request body failed validation."
+          }

@@ -1,0 +1,33 @@
+meta {
+  name: Get Token - OAuth2
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://www.httpfaker.org/api/auth/oauth2/client-credentials/resource
+  body: none
+  auth: oauth2
+}
+
+auth:oauth2 {
+  grant_type: client_credentials
+  access_token_url: https://www.httpfaker.org/api/auth/oauth2/client-credentials/token
+  refresh_token_url: 
+  client_id: {{oauthClientId}}
+  client_secret: {{oauthClientSecret}}
+  scope: user:read
+  credentials_placement: body
+  credentials_id: credentials
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: true
+  auto_refresh_token: false
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}

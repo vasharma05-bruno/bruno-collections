@@ -1,0 +1,16 @@
+info:
+  name: Scripting
+  type: folder
+  seq: 5
+
+request:
+  variables:
+    - name: baseUrl
+      value: https://echo.usebruno.com/
+
+docs:
+  content: |-
+    ### References
+
+    Using JS Files Bruno Blog: https://blog.usebruno.com/js-file
+  type: text/markdown

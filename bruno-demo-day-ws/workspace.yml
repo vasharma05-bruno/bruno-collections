@@ -1,0 +1,10 @@
+opencollection: 1.0.0
+info:
+  name: "Bruno-Demo-Day"
+  type: workspace
+
+collections:
+  - name: "Bruno E2E Demo"
+    path: "collections/Bruno E2E Demo"
+
+docs: ''

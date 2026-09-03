@@ -1,0 +1,26 @@
+meta {
+  name: Delete User
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseUrl}}/scim/v2/Users/{{userId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{scimApiKey}}
+}
+
+docs {
+  Delete a user
+  
+  deletes the user by setting active to false.
+  The user record is retained but marked as inactive.
+  
+  An email notification will be sent to the user about the deactivation.
+  
+  Requires SCIM API key authentication.
+}

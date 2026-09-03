@@ -1,0 +1,83 @@
+meta {
+  name: 05-Scripts and Chaining
+  seq: 5
+}
+
+docs {
+  # ⚡ Section 5: Scripts and Chaining
+  
+  Scripts let you run JavaScript **before** and **after** requests — enabling powerful data manipulation, request chaining, and visualization.
+  
+  In this section, you will:
+  
+  - ✅ Dynamically modify requests using pre-request scripts
+  - ✅ Generate realistic test data with `bru.setVar()`
+  - ✅ Chain requests together with `bru.runRequest()`
+  - ✅ Visualize response data with `bru.visualize()`
+  
+  📌 Make sure the **Workshop** environment is selected from the dropdown (top right).
+  
+  ---
+  
+  ### 📋 Requests in This Section
+  
+  ---
+  
+  **🔹 Dynamically Set Requests** — Modify a request on the fly with scripts
+  - A pre-request script uses `req.setBody()`, `req.setHeaders()`, and `req.setMethod()` to transform the request before it sends
+  - 🎯 **Your task:** The body values, Content-Type header, and `console.log()` statements are **empty** — fill them in
+  - 💡 **Hint:** The script changes a GET into a POST with a JSON body — what Content-Type does JSON use?
+  
+  ---
+  
+  **🔹 Generate Test Data** — Create realistic fake data in pre-request scripts
+  - Generates random usernames, emails, timestamps, and request IDs using `bru.setVar()` to populate the request body
+  - 🎯 **Your task:** The `firstNames` and `lastNames` arrays are **empty** — add some names. The `bru.setVar()` calls and `console.log()` are also **missing values**
+  - 💡 **Hint:** Look at how `username` and `email` are derived from the name arrays
+  - **Try it:** Send multiple times — data changes with every request!
+  
+  ---
+  
+  **🔹 Update Post** — Captures a post ID for use in chaining
+  - Sends a PUT request to update a post and captures the returned ID with `bru.setVar("capturedPostId", ...)`
+  - ✅ This request is mostly complete — send it and check the **Timeline** tab to see the captured values
+  - This is the "first step" in the request chain used by **Get Post Details**
+  
+  ---
+  
+  **🔹 Get Post Details** — Request chaining with `bru.runRequest()`
+  - Uses a pre-request script to run **Update Post** first, then fetches the post using the captured ID
+  - 🎯 **Your task:** The `bru.runRequest()` path is **incomplete** — fill in the correct path to the Update Post request
+  - 🎯 **Your task:** The response logging values are **empty** — fill in the correct properties from the response
+  - 💡 **Hint:** `bru.runRequest()` paths are relative to the **collection root** (e.g., `"folder/subfolder/Request Name"`)
+  
+  ---
+  
+  **🔹 Visualize Response** — Interactive data visualization
+  - Fetches all users and renders them as a sortable, filterable table using `bru.visualize()`
+  - 🎯 **Your task:** The `bru.visualize()` call and `console.log()` are **commented out** — uncomment them
+  - **Try it:** Send the request, then switch to the **Visualize** tab to see the interactive table
+  
+  ---
+  
+  ### 📁 Solution Folder
+  
+  The **Solution** subfolder contains fully working versions of all requests.
+  
+  **Solution requests:**
+  - ✅ **Dynamically Set Requests** — complete with body values, headers, and logging
+  - ✅ **Generate Test Data** (Pre-Request Scripting) — complete with name arrays and variable assignments
+  - ✅ **Update Post** — captures post ID for chaining
+  - ✅ **Get Post Details** — full request chain with `bru.runRequest()`
+  - ✅ **Visualize Response** — active `bru.visualize()` with ag-grid table
+  
+  ---
+  
+  ### 📌 Key Concepts
+  
+  - **Pre-request scripts** — run JavaScript before the request sends (`req.setBody()`, `req.setMethod()`, `req.setHeaders()`)
+  - **Post-response scripts** — run JavaScript after the response (`bru.setVar()`, `console.log()`)
+  - **`bru.runRequest()`** — execute another request from within a script (path is relative to collection root)
+  - **`bru.setVar()` / `bru.getVar()`** — pass data between requests via runtime variables
+  - **`bru.visualize()`** — render response data as interactive tables or charts in the Visualize tab
+}

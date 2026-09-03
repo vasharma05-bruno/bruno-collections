@@ -1,0 +1,39 @@
+meta {
+  name: Assert Basics
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{dogApiUrl}}/facts
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isJson
+  res.body.data: isArray
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Assert Basics ✅
+  
+  The `assert {}` block provides a simple, declarative way to validate responses — no JavaScript needed!
+  
+  **This request asserts:**
+  - `res.status: eq 200` — Status code equals 200
+  - `res.body: isJson` — Response body is valid JSON
+  - `res.body.data: isArray` — The `data` field is an array
+  
+  **Available operators:** `eq`, `neq`, `gt`, `gte`, `lt`, `lte`, `contains`, `isNumber`, `isString`, `isBoolean`, `isArray`, `isJson`, and more.
+  
+  **Send the request and check the Tests tab** to see the results!
+}

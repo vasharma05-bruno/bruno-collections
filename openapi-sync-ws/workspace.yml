@@ -1,0 +1,14 @@
+opencollection: 1.0.0
+info:
+  name: "OpenAPI Sync"
+  type: workspace
+
+collections:
+  - name: "Orders API"
+    path: "collections/Orders API"
+
+specs:
+  - name: "orders-api-v1"
+    path: "../../Movies/openapi sync/orders-api-v1.yaml"
+
+docs: ''

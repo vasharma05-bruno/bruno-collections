@@ -1,0 +1,40 @@
+meta {
+  name: Update a Post
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/posts/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id": 1,
+    "title": "Updated from Bruno Workshop",
+    "body": "This post was updated during the live workshop!",
+    "userId": {{process.env.processUserId}}
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Update a Post ✏️
+  
+  This sends a PUT request to update an existing post.
+  
+  **Notice:**
+  - The URL includes `/posts/1` to target a specific post
+  - The HTTP method is `put`
+  - The body contains the full updated resource
+  
+  **Expected:** Status `200 OK` with the updated post data.
+}

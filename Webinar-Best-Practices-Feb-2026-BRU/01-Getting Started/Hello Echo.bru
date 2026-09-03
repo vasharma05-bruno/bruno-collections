@@ -1,0 +1,35 @@
+meta {
+  name: Hello Echo
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{echoUrl}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "message": "",
+    "workshop": ""
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Hello Echo 👋
+  
+  This is the simplest possible request — a POST to Bruno's echo server.
+  
+  The echo server mirrors back whatever JSON you send it, so you can see exactly what arrived on the other end.
+  
+  **Click Send ▶️ and explore the response!**
+}

@@ -1,0 +1,39 @@
+meta {
+  name: Create a Post
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/posts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "My First Bruno Post",
+    "body": "Hello from the Bruno Live Workshop!",
+    "userId": 0
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Create a Post ✏️
+  
+  This sends a POST request to create a new post.
+  
+  **Notice:**
+  - The HTTP method is `post` (not `get`)
+  - The `body: json` tells Bruno we're sending JSON data
+  - `{{defaultUserId}}` comes from your selected environment
+  
+  **Expected:** Status `201 Created` with the new post data in the response.
+}

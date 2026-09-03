@@ -1,0 +1,37 @@
+meta {
+  name: Dynamically Set Requests
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{echoUrl}}
+  body: none
+  auth: inherit
+}
+
+script:pre-request {
+  req.setBody({
+    "title": "Bruno Starter Guide",
+    "id": "07"
+  })
+  
+  req.setHeaders("Content-Type: application/json")
+  
+  req.setMethod("POST")
+}
+
+script:post-response {
+  //Log response body
+  console.log(res.body);
+  
+  //Log the response status
+  console.log(res.status);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}

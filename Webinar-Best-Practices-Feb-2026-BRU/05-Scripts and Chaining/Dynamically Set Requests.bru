@@ -1,0 +1,40 @@
+meta {
+  name: Dynamically Set Requests
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{echoUrl}}
+  body: none
+  auth: inherit
+}
+
+script:pre-request {
+  // Add title and id values
+  req.setBody({
+    "title": "",
+    "id": ""
+  })
+  
+  // Set content type to 'application/json'
+  req.setHeaders("Content-Type: ")
+  
+  // Set method to POST
+  req.setMethod("POST")
+}
+
+script:post-response {
+  //Log response body
+  console.log();
+  
+  //Log the response status
+  console.log();
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}

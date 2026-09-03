@@ -1,0 +1,18 @@
+meta {
+  name: Service Provider Config
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/scim/v2/ServiceProviderConfig
+  body: none
+  auth: none
+}
+
+docs {
+  Get SCIM Service Provider Configuration
+  
+  This is a public endpoint that returns the SCIM capabilities supported by the Bruno license server.
+  No authentication required.
+}

@@ -1,0 +1,28 @@
+meta {
+  name: Get All Users
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/users
+  body: none
+  auth: none
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
+
+docs {
+  # Get All Users 👥
+  
+  Fetches all users from the JSONPlaceholder API.
+  
+  This returns an array of 10 users, each with properties like `name`, `email`, `address`, `company`, etc.
+  
+  **Tip:** Notice the `{{baseUrl}}` in the URL — this is an **environment variable**! We'll learn more about these in the next section.
+}

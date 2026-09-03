@@ -1,0 +1,24 @@
+info:
+  name: Basic-Requests-Tests
+  type: folder
+  seq: 1
+
+request:
+  auth:
+    type: oauth2
+    flow: authorization_code
+    credentials:
+      clientSecret: dfsere
+      placement: body
+    pkce:
+      disabled: true
+    tokenConfig:
+      id: credentials
+      placement:
+        header: Bearer
+    settings:
+      autoFetchToken: true
+      autoRefreshToken: false
+  scripts:
+    - type: before-request
+      code: // console.log('---Folder Level Scripts 📜 ---')''
