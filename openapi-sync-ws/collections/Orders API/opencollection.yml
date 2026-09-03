@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: Orders API
+  name: Orders Collection
 config:
   proxy:
     inherit: true
