@@ -10,7 +10,7 @@
 apiVersion: usebruno.com/v1alpha1
 kind: Bruno
 metadata:
-  name: bruno-genui-collection
+  name: bruno-genui-collection-v2
 spec:
   type: bruno-collection
   url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/genui-collection/collection
