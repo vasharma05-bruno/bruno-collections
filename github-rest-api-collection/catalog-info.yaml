@@ -1,7 +1,7 @@
 apiVersion: usebruno.com/v1alpha1
 kind: Bruno
 metadata:
-  name: Github REST API Collection
+  name: Github-rest-api-collection
 spec:
   type: bruno-collection
   owner: guests
