@@ -10,3 +10,4 @@ spec:
   url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/github-rest-api-collection
   partOf:
     - api:default/github-rest-api
+    - api:default/orders-api
