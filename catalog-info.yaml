@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bruno-collections
+  annotations:
+    github.com/project-slug: vasharma05-bruno/bruno-collections
+spec:
+  type: other
+  lifecycle: unknown
+  owner: guests
