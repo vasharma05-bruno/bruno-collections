@@ -1,0 +1,7 @@
+apiVersion: usebruno.com/v1alpha1
+kind: Bruno
+metadata:
+  name: qa-broken-manifest
+spec:
+  type: collection
+  owner: guests

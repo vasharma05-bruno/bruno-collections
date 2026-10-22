@@ -1,0 +1,29 @@
+bruno:
+  allowRuntimeWrites: true
+  cacheTtlSeconds: 60
+  failureTtlSeconds: 30
+  collections:
+    - type: url
+      name: qa-config-testbench
+      title: QA Config Testbench
+      owner: guests
+      url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/bruno-testbench
+      partOf: api:default/github-rest-api
+    - type: url
+      name: qa-config-genui
+      url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/genui-collection/collection
+      partOf:
+        - api:default/sarvam-ai
+        - api:default/aws-secret-manager
+    - type: url
+      name: qa-config-testbench
+      url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/Webinar-Best-Practices-Feb-2026-BRU
+    - type: url
+      name: QA Config Invalid Name
+      url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/Webinar-Best-Practices-Feb-2026-BRU
+    - type: git
+      name: qa-config-unsupported-type
+      url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/Webinar-Best-Practices-Feb-2026-BRU
+    - type: url
+      name: qa-config-bad-url
+      url: https://example.com/not/a/repo

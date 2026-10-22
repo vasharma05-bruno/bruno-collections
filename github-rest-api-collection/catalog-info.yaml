@@ -1,12 +1,10 @@
 apiVersion: usebruno.com/v1alpha1
 kind: Bruno
 metadata:
-  name: Github-rest-api-collection
+  name: qa-github-rest-api
 spec:
-  type: bruno-collection
+  type: collection
   owner: guests
-  # A `.bru` collection at the REPOSITORY ROOT — the case where the collection
-  # folder and the repo are the same thing.
   url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/github-rest-api-collection
   partOf:
     - api:default/github-rest-api

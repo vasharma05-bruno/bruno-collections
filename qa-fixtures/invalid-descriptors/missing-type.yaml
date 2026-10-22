@@ -1,0 +1,7 @@
+apiVersion: usebruno.com/v1alpha1
+kind: Bruno
+metadata:
+  name: qa-missing-type
+spec:
+  owner: guests
+  url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/github-rest-api-collection

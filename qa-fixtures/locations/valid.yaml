@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: qa-bruno-valid
+  description: Bruno collections whose catalog-info.yaml is valid.
+spec:
+  targets:
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/github-rest-api-collection/catalog-info.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/bruno-scim-api-collection/scim-collection/catalog-info.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/bruno-demo-day-ws/collections/Bruno%20E2E%20Demo/catalog-info.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/openapi-sync-ws/collections/Orders%20API/catalog-info.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/broken-manifest/catalog-info.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/no-manifest/catalog-info.yaml

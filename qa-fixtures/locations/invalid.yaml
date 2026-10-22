@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: qa-bruno-invalid
+  description: Bruno descriptors that are invalid or point at something unusable.
+spec:
+  targets:
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/invalid-descriptors/missing-type.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/invalid-descriptors/wrong-api-version.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/invalid-descriptors/invalid-name.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/invalid-descriptors/unknown-api-part-of.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/invalid-descriptors/unparseable-owner.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/invalid-descriptors/missing-path.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/invalid-descriptors/no-manifest-url.yaml
+    - https://github.com/vasharma05-bruno/bruno-collections/blob/main/qa-fixtures/invalid-descriptors/duplicate-name.yaml

@@ -1,0 +1,8 @@
+apiVersion: usebruno.com/v1alpha1
+kind: Bruno
+metadata:
+  name: qa-unparseable-owner
+spec:
+  type: collection
+  owner: 'user:'
+  url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/github-rest-api-collection

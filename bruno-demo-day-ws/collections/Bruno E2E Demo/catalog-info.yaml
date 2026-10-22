@@ -1,13 +1,20 @@
 apiVersion: usebruno.com/v1alpha1
 kind: Bruno
 metadata:
-  name: bruno-demo-collection
+  name: qa-bruno-e2e-demo
+  title: QA Bruno E2E Demo (title from descriptor)
+  description: Description set in catalog-info.yaml, overriding the collection manifest.
+  version: 9.9.9
+  tags:
+    - qa
+    - opencollection
+  links:
+    - url: https://docs.usebruno.com
+      title: Bruno Docs
 spec:
-  type: bruno-collection
+  type: collection
   owner: guests
-  # The largest of the sample collections (29 requests) and the one with
-  # environments, so it is the useful one for eyeballing the Environments card
-  # and the generated definition's size.
   url: https://github.com/vasharma05-bruno/bruno-collections/tree/main/bruno-demo-day-ws/collections/Bruno%20E2E%20Demo
   partOf:
-    - api:default/bruno-e2e-demo-api
+    - api:default/github-rest-api
+    - api:default/sarvam-ai
